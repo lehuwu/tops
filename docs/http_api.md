@@ -7,9 +7,9 @@
 
 ## **1 API使用说明**   
 ### **1.1 请求过程说明**   
-1.1 构造请求数据，用户数据按照Tops提供的接口规则，通过程序生成签名，生成请求数据集合；       
-1.2 发送请求数据，把构造完成的数据集合通过``POST/GET``等提交的方式传递给Tops；  
-1.3 Tops对请求数据进行处理，服务器在接收到请求后，会首先进行安全校验，验证通过后便会处理该次发送过来的请求；
+1.1 构造请求数据，用户数据按照TOPS提供的接口规则，通过程序生成签名，生成请求数据集合；       
+1.2 发送请求数据，把构造完成的数据集合通过``POST/GET``等提交的方式传递给TOPS；  
+1.3 TOPS对请求数据进行处理，服务器在接收到请求后，会首先进行安全校验，验证通过后便会处理该次发送过来的请求；
 1.4 返回响应结果数据，Asch把响应结果以JSON的格式反馈给用户，每个响应都包含``success``字段，表示请求是否成功，成功为true, 失败为false。 如果失败，则还会包含一个``error``字段，表示错误原因；       
 1.5 对获取的返回结果数据进行处理；
 
@@ -40,7 +40,7 @@ POST ``/api/accounts/open2/``
 {   
 	"success": true,   
 	"account": {   
-		"address": "T7oXKNjEhNuBir3r9PMrBj96T6Xuqh8Jpn",  //tops地址   
+		"address": "T7oXKNjEhNuBir3r9PMrBj96T6Xuqh8Jpn",  //TOPS地址   
 		"unconfirmedBalance": 29380000000,  //未确认和已确认的余额之和，该值大于等于balance   
 		"balance": 29380000000, //余额   
 		"publicKey": "bd1e78cabc0fbf1eca36b28bbb8ea85f320967659cbf1f7ff1603d0a368867b9", //公钥 
@@ -60,7 +60,7 @@ POST ``/api/accounts/open2/``
 请求示例
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -k -d '{"publicKey":"bd1e78c5a10fbf1eca36b28bbb8ea85f320967659cbf1f7ff1603d0a368867b9"}' http://localhost:7070/api/accounts/open2/ 
+curl -X POST -H "Content-Type: application/json" -k -d '{"publicKey":"bd1e78c5a10fbf1eca36b28bbb8ea85f320967659cbf1f7ff1603d0a368867b9"}' http://localhost:5777/api/accounts/open2/ 
 ```
 
 公钥可以通过SDK本地生成
@@ -90,7 +90,7 @@ POST ``/api/accounts/open``
 
 |名称	|类型   |必填 |说明              |
 |------ |-----  |---  |----              |
-|secret |string |Y    |tops账户密码       |
+|secret |string |Y    |TOPS账户密码       |
 
 返回结果说明： 
 
@@ -118,7 +118,7 @@ POST ``/api/accounts/open``
 
 请求示例：   
 ```bash   
-curl -X POST -H "Content-Type: application/json" -k -d '{"secret":"fault still attack alley expand music basket purse later educate follow ride"}' http://localhost:7070/api/accounts/open/ 
+curl -X POST -H "Content-Type: application/json" -k -d '{"secret":"fault still attack alley expand music basket purse later educate follow ride"}' http://localhost:5777/api/accounts/open/ 
 ```
 
 
@@ -152,7 +152,7 @@ GET ``/api/accounts/getBalance?address=<address>``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/accounts/getBalance?address=14636456069025293113'   
+curl -k -X GET 'http://localhost:5777/api/accounts/getBalance?address=14636456069025293113'   
 ```
 
 
@@ -187,7 +187,7 @@ GET ``/api/accounts?address=<address> ``
 请求示例：
 
 ```bash
-curl -k -X GET http://localhost:7070/api/accounts?address=<address>
+curl -k -X GET http://localhost:5777/api/accounts?address=<address>
 ```
 
 
@@ -216,7 +216,7 @@ GET ``/api/accounts/getPublicKey?address=<address>``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/accounts/getPublickey?address=14636456069025293113'   
+curl -k -X GET 'http://localhost:5777/api/accounts/getPublickey?address=14636456069025293113'   
 ```
 
 响应JSON返回示例：   
@@ -238,7 +238,7 @@ POST ``/api/accounts/generatePublicKey ``
 
 |名称	|类型   |必填 |说明              |
 |------ |-----  |---  |----              |
-|secret |string |Y    |tops账户密码      |
+|secret |string |Y    |TOPS账户密码      |
 
 返回参数说明：   
 
@@ -251,7 +251,7 @@ POST ``/api/accounts/generatePublicKey ``
 ```bash   
 curl -k -H "Content-Type: application/json" \
 -X POST -d '{"secret":"<INSERT SECRET HERE>"}' \
-http://localhost:7070/api/accounts/generatePublicKey
+http://localhost:5777/api/accounts/generatePublicKey
 ```
 
 响应JSON返回示例：   
@@ -280,12 +280,12 @@ GET ``/api/accounts/delegates?address=<address> ``
 |名称	|类型   |说明              |
 |------ |-----  |----              |
 |success|boole  |是否成功获得response数据 |
-|delegates|Array  |已投票的受托人详情数组      |
+|delegates|Array  |已投票的见证人详情数组      |
 
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/accounts/delegates?address=<address>'   
+curl -k -X GET 'http://localhost:5777/api/accounts/delegates?address=<address>'   
 ```
 
 JSON返回示例：   
@@ -328,7 +328,7 @@ JSON返回示例：
 }   
 ```
 
-#### **2.1.7 获取受托人手续费设置**   
+#### **2.1.7 获取见证人手续费设置**   
 GET ``/api/accounts/delegates/fee``
 
 
@@ -343,7 +343,7 @@ GET ``/api/accounts/delegates/fee``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/accounts/delegates/fee  
+curl -k -X GET 'http://localhost:5777/api/accounts/delegates/fee  
 ```
 
 JSON返回示例：   
@@ -356,7 +356,7 @@ JSON返回示例：
 
 
 
-#### **2.1.8 给受托人投票**   
+#### **2.1.8 给见证人投票**   
 
 PUT ``/api/accounts/delegates``
 
@@ -365,10 +365,10 @@ PUT ``/api/accounts/delegates``
 
 |名称	|类型   |必填 |说明              |
 |------ |-----  |---  |----              |
-|secret |string |Y    |tops账户密码       |
+|secret |string |Y    |TOPS账户密码       |
 |publicKey|string  |N|公钥      |
-|secondSecret|string|N|tops账户二级密码，最小长度：1，最大长度：100|
-|delegates|Array|受托人公钥数组，每个公钥前需要加上+或者-号，代表增加/取消对其的投票||
+|secondSecret|string|N|TOPS账户二级密码，最小长度：1，最大长度：100|
+|delegates|Array|见证人公钥数组，每个公钥前需要加上+或者-号，代表增加/取消对其的投票||
 
 返回参数说明：   
 
@@ -380,7 +380,7 @@ PUT ``/api/accounts/delegates``
 
 请求示例：   
 ```bash   
-curl -k -H "Content-Type: application/json" -X PUT -d '{"secret":"call scissors pupil water friend timber spend brand vote obey corn size","publicKey":"3ec1c9ec08c0512641deba37c0e95a0fe5fc3bdf58424009f594d7d6a4e28a2a","delegates":["+fafcd01f6b813fdeb3c086e60bc7fa9bfc8ef70ae7be47ce0ac5d06e7b1a8575"]}' 'http://localhost:7070/api/accounts/delegates'     
+curl -k -H "Content-Type: application/json" -X PUT -d '{"secret":"call scissors pupil water friend timber spend brand vote obey corn size","publicKey":"3ec1c9ec08c0512641deba37c0e95a0fe5fc3bdf58424009f594d7d6a4e28a2a","delegates":["+fafcd01f6b813fdeb3c086e60bc7fa9bfc8ef70ae7be47ce0ac5d06e7b1a8575"]}' 'http://localhost:5777/api/accounts/delegates'     
 ```
 
 JSON返回示例：   
@@ -436,7 +436,7 @@ GET `` /api/transactions?blockId=<blockId>&senderId=<senderId>&recipientId=<reci
 
 请求示例：   
 ```bash   
-curl -k -X GET http://localhost:7070/api/transactions?blockId=<blockId>
+curl -k -X GET http://localhost:5777/api/transactions?blockId=<blockId>
 ```
 
 JSON返回示例：   
@@ -526,7 +526,7 @@ GET ``/api/transactions/get?id=<id> ``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/transactions/get?id=14093929199102906687'   
+curl -k -X GET 'http://localhost:5777/api/transactions/get?id=14093929199102906687'   
 ```
 
 JSON返回示例：   
@@ -577,7 +577,7 @@ GET ``/api/transactions/unconfirmed/get?id=<id> ``
 
 请求示例：   
 ```bash   
-curl -k -X GET http://loalhost:7070/api/transactions/unconfirmed/get?id=7557072430673853692 
+curl -k -X GET http://loalhost:5777/api/transactions/unconfirmed/get?id=7557072430673853692 
 # 正常情况，该未确认交易存在时间极短0~10秒   
 ```
 
@@ -621,7 +621,7 @@ GET  ``/api/transactions/unconfirmed``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/transactions/unconfirmed'   
+curl -k -X GET 'http://localhost:5777/api/transactions/unconfirmed'   
 ```
 
 JSON返回示例：   
@@ -644,7 +644,7 @@ PUT ``/api/transactions ``
 
 |名称	|类型   |必填 |说明              |
 |------ |-----  |---  |----              |
-|secret |string |Y    |tops账户密码       |
+|secret |string |Y    |TOPS账户密码       |
 |amount|integer|Y|金额，最小值：1，最大值：10000000000000000|
 |recipientId|string|Y|接收者地址,最小长度：1|
 |publicKey|string|N|发送者公钥|
@@ -662,7 +662,7 @@ PUT ``/api/transactions ``
 ```bash   
 curl -k -H "Content-Type: application/json" \
 -X PUT -d '{"secret":"<INSERT SECRET HERE>","amount":<INSERT AMOUNT HERE>,"recipientId":"<INSERT WALLET ADDRESS HERE>"}' \
-http://localhost:7070/api/transactions
+http://localhost:5777/api/transactions
 ```
 
 JSON返回示例：   
@@ -697,7 +697,7 @@ GET ``/api/blocks/get?id=<id> ``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/blocks/get?id=6076474715648888747'   
+curl -k -X GET 'http://localhost:5777/api/blocks/get?id=6076474715648888747'   
 ```
 
 JSON返回示例：   
@@ -758,7 +758,7 @@ GET ``/api/blocks``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/blocks?limit=2&offset=0&orderBy=height:desc'   
+curl -k -X GET 'http://localhost:5777/api/blocks?limit=2&offset=0&orderBy=height:desc'   
 ```
 
 JSON返回示例：   
@@ -822,7 +822,7 @@ GET ``/api/blocks/getHeight ``
 
 请求示例：   
 ```bash   
-curl -k -X GET 'http://localhost:7070/api/blocks/getheight'    
+curl -k -X GET 'http://localhost:5777/api/blocks/getheight'    
 ```
 
 JSON返回示例：   
