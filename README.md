@@ -10,7 +10,7 @@
 
   `sudo apt-get install -y python build-essential curl automake autoconf libtool`
 
-- Git (<https://github.com/git/git>) -- Used for cloning and updating Toychan
+- Git (<https://github.com/git/git>) -- Used for cloning and updating TOP Points
 
   `sudo apt-get install -y git`
 
@@ -52,7 +52,7 @@
 
 ## Installation Steps
 
-Clone the Toychan repository using Git and initialize the modules.
+Clone the TOP Points repository using Git and initialize the modules.
 
 ```
 git clone https://github.com/TopPoints/tops.git
@@ -64,11 +64,11 @@ npm install
 
 ## Managing Tops
 
-To test that Toychan is built and configured correctly, run the following command:
+To test that TOP Points is built and configured correctly, run the following command:
 
 `node app.js`
 
-In a browser navigate to: <http://localhost:5888(for the mainnet) or <http://localhost:5777 (for the testnet). If Toychan is running on a remote system, switch `localhost` for the external IP Address of the machine.
+In a browser navigate to: <http://localhost:5888(for the mainnet) or <http://localhost:5777 (for the testnet). If TOP Points is running on a remote system, switch `localhost` for the external IP Address of the machine.
 
 Once the process is verified as running correctly, `CTRL+C` and start the process with `pm2`. This will fork the process into the background and automatically recover the process if it fails.
 
@@ -78,7 +78,7 @@ After the process is started, its runtime status and log location can be retriev
 
 `pm2 show tops`
 
-To stop Toychan after it has been started with `pm2`, issue the following command:
+To stop TOP Points after it has been started with `pm2`, issue the following command:
 
 `pm2 stop tops`
 
