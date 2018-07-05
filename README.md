@@ -37,8 +37,8 @@
   sudo -u postgres createuser --createdb $USER
   createdb tops_test
   createdb tops_main
-  sudo -u postgres psql -d Toychan_test -c "alter user "$USER" with password 'password';"
-  sudo -u postgres psql -d Toychan_main -c "alter user "$USER" with password 'password';"
+  sudo -u postgres psql -d tops_test -c "alter user "$USER" with password 'password';"
+  sudo -u postgres psql -d tops_main -c "alter user "$USER" with password 'password';"
   ```
 
 - Bower (<http://bower.io/>) -- Bower helps to install required JavaScript dependencies.
