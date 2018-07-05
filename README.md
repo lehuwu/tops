@@ -33,16 +33,7 @@
 - Install PostgreSQL (version 9.6.2):
 
   ```
-  sudo apt-get install -y software-properties-common 
-  sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ 
-
-  xenial-pgdg main"
-  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc 
-
-  sudo apt-key add -
-  sudo apt-get update
-  sudo apt-get install -y postgresql-9.6 postgresql-contrib-9.6 libpq-dev
-  
+  curl -sL "https://raw.githubusercontent.com/TopPoints/tops/master/scripts/setup_postgresql.Linux" | bash -
   sudo -u postgres createuser --createdb $USER
   createdb tops_test
   createdb tops_main
