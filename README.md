@@ -8,7 +8,10 @@
 
 - Tool chain components -- Used for compiling dependencies
 
-  `sudo apt-get install -y python build-essential curl automake autoconf libtool`
+  ```
+  sudo apt-get update
+  sudo apt-get install -y python build-essential curl automake autoconf libtool
+  ```
 
 - Git (<https://github.com/git/git>) -- Used for cloning and updating TOP Points
 
